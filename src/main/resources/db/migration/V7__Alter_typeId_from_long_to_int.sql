@@ -1,0 +1,1 @@
+alter table table_comment modify type_id int;

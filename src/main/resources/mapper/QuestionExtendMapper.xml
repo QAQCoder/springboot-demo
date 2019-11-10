@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--拓展mapper，非MGB自动生成的-->
+<mapper namespace="demo.mapper.QuestionExtendMapper">
+    <update id="incrementViewCount" parameterType="demo.model.Question">
+        update table_questions
+        set
+        browse_count = browse_count + #{browseCount,jdbcType=INTEGER}
+        where id = #{id}
+    </update>
+
+    <update id="incrementCommentCount" parameterType="demo.model.Question">
+        update table_questions
+        set
+        comment_count = comment_count + #{commentCount,jdbcType=INTEGER}
+        where id = #{id}
+    </update>
+</mapper>

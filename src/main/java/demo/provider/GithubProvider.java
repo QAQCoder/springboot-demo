@@ -48,7 +48,9 @@ public class GithubProvider {
                 .build();
         try {
             Response response = okHttpClient.newCall(request).execute();
-            GithubUser githubUser = gson.fromJson(response.body().string(), GithubUser.class);
+            String body = response.body().string();
+            System.out.println(body);
+            GithubUser githubUser = gson.fromJson(body, GithubUser.class);
             return githubUser;
         } catch (IOException e) {
             e.printStackTrace();

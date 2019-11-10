@@ -39,3 +39,15 @@ create table table_user {
 
 }
 ```
+
+####加入Flyway
+```bash
+//执行Flyway
+mvn flyway:migrate
+```
+
+####加入Mybatis Generator
+```bash
+//执行MGB
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+```

@@ -1,0 +1,2 @@
+
+ALTER TABLE table_user ADD bio VARCHAR(256);

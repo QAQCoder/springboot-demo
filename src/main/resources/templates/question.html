@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${question.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <!--引入bootstrap-->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/static/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css" th:href="@{/static/css/bootstrap-theme.min.css}">
+    <script src="../static/js/jquery-3.4.1.min.js" th:src="@{/static/js/jquery-3.4.1.min.js}"></script>
+    <script type="application/javascript" src="/js/bootstrap.min.js" th:src="@{/static/js/bootstrap.min.js}"></script>
+    <script type="application/javascript" src="/js/community.js" th:src="@{/static/js/community.js}"></script>
+
+    <link rel="stylesheet" href="../static/css/community.css" th:href="@{/static/css/community.css}">
+
+</head>
+<body>
+
+<!--insert部导航栏-->
+<div th:insert="navigation :: nav"></div>
+
+<div class="container-fluid main profile">
+    <div class="row">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+            <!--问题信息展示区域-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4><span th:text="${question.title}"></span></h4>
+                <span class="text-desc">
+                作者：<span th:text="${question.user.name}"></span> |
+                发布时间：<span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd hh:mm')}"></span> |
+                阅读数：<span th:text="${question.browseCount}==null ? '0':${question.browseCount}"></span>
+            </span>
+                <hr class="hr-line col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <span th:text="${question.description}"/>
+                </div>
+                <hr class="hr-line col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!--在问题详情页，只有当前登录的用户 是 问题的作者时，才展示 编辑 按钮-->
+                    <a th:href="@{'/publish/' + ${question.id}}" class="community-menu" th:if="${session.user != null && session.user.id == question.user.id}">
+                        <span class="glyphicon glyphicon-pencil"/>编辑
+                    </a>
+                </div>
+            </div>
+            <!--回复区域-->
+            <hr class="hr-line col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <!--回复人的头像和名称-->
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-rounded img-thumbnail avatar-img" th:src="${question.user.avatarUrl}==null ? 'https://ae01.alicdn.com/kf/H4bb2782fb1f64a9b823ce674099fc3e9w.gif':${question.user.avatarUrl}">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading"><span th:text="${question.user.name}"></span></h6></span>
+                    </div>
+                </div>
+                <!--回复框-->
+                <textarea class="form-control comment-area" id="comment_content" rows="3"></textarea>
+                <!--用于保存问题id，这里对应的是comment的parentId-->
+                <input type="hidden" id="question_id" th:value="${question.id}"/>
+                <button type="button" class="btn btn-success btn-comment-publish" onclick="postOfSendComment()">回复</button>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>发起人</h4>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-rounded img-thumbnail avatar-img"
+                                 th:src="${question.user.avatarUrl}==null ? 'https://ae01.alicdn.com/kf/H4bb2782fb1f64a9b823ce674099fc3e9w.gif':${question.user.avatarUrl}">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h6 class="media-heading">
+                            <span th:text="${question.user.name}"></span>
+                        </h6>
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="hr-line col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h4>相关问题</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

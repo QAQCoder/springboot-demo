@@ -1,0 +1,60 @@
+body {
+    background-color: #efefef;
+}
+
+.main {
+    margin: 30px;
+    background-color: #f7f7f7;
+    /*border-radius: 20px;*/
+}
+
+.btn-publish {
+    float: right;
+    margin-bottom: 15px;
+}
+
+.avatar-img {
+    width: 45px;
+    height: 45px;
+}
+
+.text-desc {
+    font-size: 12px;
+    font-weight: normal;
+    color: #999;
+    text-indent: 2em;
+}
+
+.ul-no-type {
+    list-style-type: none;
+}
+
+.profile .section {
+    margin-top: 20px;
+}
+
+.hr-line {
+    height: 2px;
+    background-color: cadetblue;
+    border-radius: 10%;
+}
+
+.jumbotron {
+    margin: 0px;
+}
+
+.community-menu {
+    font-size: 13px;
+    color: #999;
+}
+.media-body {
+    padding-top: 10px;
+}
+.comment-area {
+    /*上下10  左右0*/
+    margin: 10px 0;
+}
+.btn-comment-publish {
+    float: right;
+    margin-bottom: 10px;
+}

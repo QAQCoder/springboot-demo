@@ -1,35 +1,27 @@
 package demo.model;
 
-/**
- * Author QAQCoder , Email:QAQCoder@qq.com
- * Create time 2019/7/13 21:53
- * Class description：
- */
 public class User {
-    private int id;
+    private Long id;
+
     private String accountId;
+
     private String name;
+
     private String token;
-    private Long gmtCreate; //创建时间  ，gmt表示即格林尼治平太阳时间
-    private Long gmtModified;   //修改时间
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", accountId='" + accountId + '\'' +
-                ", name='" + name + '\'' +
-                ", token='" + token + '\'' +
-                ", gmtCreate=" + gmtCreate +
-                ", gmtModified=" + gmtModified +
-                '}';
-    }
+    private Long gmtCreate;
 
-    public int getId() {
+    private Long gmtModified;
+
+    private String bio;
+
+    private String avatarUrl;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,7 +30,7 @@ public class User {
     }
 
     public void setAccountId(String accountId) {
-        this.accountId = accountId;
+        this.accountId = accountId == null ? null : accountId.trim();
     }
 
     public String getName() {
@@ -46,7 +38,7 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getToken() {
@@ -54,7 +46,7 @@ public class User {
     }
 
     public void setToken(String token) {
-        this.token = token;
+        this.token = token == null ? null : token.trim();
     }
 
     public Long getGmtCreate() {
@@ -71,5 +63,21 @@ public class User {
 
     public void setGmtModified(Long gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio == null ? null : bio.trim();
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl == null ? null : avatarUrl.trim();
     }
 }
